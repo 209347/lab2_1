@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
+
 import static org.junit.Assert.*;
 
 public class BinarySearchTest {
@@ -15,9 +17,9 @@ public class BinarySearchTest {
     private final int ONE = 1;
     private final int TWO = 2;
     private final int THREE = 3;
-    private final int[] SEQ_ONE = { 1 };
-    private final int[] SEQ_TWO = { 2 };
-    private final int[] SEQ = { 1, 2, 3 };
+    private final int[] SEQ_ONE = {1};
+    private final int[] SEQ_TWO = {2};
+    private final int[] SEQ = {1, 2, 3};
 
     @Before
     public void setup() {
@@ -94,5 +96,10 @@ public class BinarySearchTest {
     public void searchPositionShouldBeMinusOneIfSeqLengthIsGreaterThanOneAndKeyIsNotInSeq() {
         searchResult = BinarySearch.search(ZERO, SEQ);
         assertThat(searchResult.getPosition(), Matchers.is(MINUS_ONE));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void searchShouldThrowIllegalArgumentExceptionIfSeqIsEmpty() {
+        searchResult = BinarySearch.search(ONE, new int[0]);
     }
 }
