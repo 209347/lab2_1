@@ -1,5 +1,7 @@
 package edu.iis.mto.bsearch;
 
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,72 +27,72 @@ public class BinarySearchTest {
     @Test
     public void searchShouldReturnTrueIfSeqLengthEqualsOneAndKeyIsInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ_ONE);
-        assertEquals(true, searchResult.isFound());
+        assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeZeroIfSeqLegnthEqualsOneAndKeyIsInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ_ONE);
-        assertEquals(ZERO, searchResult.getPosition());
+        assertThat(searchResult.getPosition(), Matchers.is(ZERO));
     }
 
     @Test
     public void searchShouldReturnFalseIfSeqLengthEqualsOneAndKeyIsNotInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ_TWO);
-        assertEquals(false, searchResult.isFound());
+        assertThat(searchResult.isFound(), Matchers.is(false));
     }
 
     @Test
     public void searchPositionShouldBeMinusOneIfSeqLegnthEqualsOneAndKeyIsNotInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ_TWO);
-        assertEquals(MINUS_ONE, searchResult.getPosition());
+        assertThat(searchResult.getPosition(), Matchers.is(MINUS_ONE));
     }
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthIsGreaterThanOneAndKeyIsTheFirstElementInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ);
-        assertEquals(true, searchResult.isFound());
+        assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeZeroIfSeqLengthIsGreaterThanOneAndKeyIsTheFirstElementInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ);
-        assertEquals(ZERO, searchResult.getPosition());
+        assertThat(searchResult.getPosition(), Matchers.is(ZERO));
     }
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthIsGreaterThanOneAndKeyIsTheLastElementInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ);
-        assertEquals(true, searchResult.isFound());
+        assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeTwoIfSeqLengthIsGreaterThanOneAndKeyIsTheLastElementInSeq() {
         searchResult = BinarySearch.search(THREE, SEQ);
-        assertEquals(TWO, searchResult.getPosition());
+        assertThat(searchResult.getPosition(), Matchers.is(TWO));
     }
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthIsGreaterThanOneAndKeyIsTheCenterElementInSeq() {
         searchResult = BinarySearch.search(ONE, SEQ);
-        assertEquals(true, searchResult.isFound());
+        assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeOneIfSeqLengthIsGreaterThanOneAndKeyIsTheCenterElementInSeq() {
         searchResult = BinarySearch.search(TWO, SEQ);
-        assertEquals(ONE, searchResult.getPosition());
+        assertThat(searchResult.getPosition(), Matchers.is(ONE));
     }
 
     @Test
     public void searchShouldReturnFalseIfSeqLengthIsGreaterThanOneAndKeyIsNotInSeq() {
         searchResult = BinarySearch.search(ZERO, SEQ);
-        assertEquals(false, searchResult.isFound());
+        assertThat(searchResult.isFound(), Matchers.is(false));
     }
 
     @Test
     public void searchPositionShouldBeMinusOneIfSeqLengthIsGreaterThanOneAndKeyIsNotInSeq() {
         searchResult = BinarySearch.search(ZERO, SEQ);
-        assertEquals(MINUS_ONE, searchResult.getPosition());
+        assertThat(searchResult.getPosition(), Matchers.is(MINUS_ONE));
     }
 }
