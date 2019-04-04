@@ -15,11 +15,6 @@ public class BinarySearchTest {
     private final int MINUS_ONE = -1;
     private final int ZERO = 0;
     private final int ONE = 1;
-    private final int TWO = 2;
-    private final int THREE = 3;
-    private final int[] SEQ_ONE = {1};
-    private final int[] SEQ_TWO = {2};
-    private final int[] SEQ = {1, 2, 3};
 
     @Before
     public void setup() {
@@ -28,73 +23,85 @@ public class BinarySearchTest {
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthEqualsOneAndKeyIsInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ_ONE);
+        int[] SEQ = {1, 2, 3};
+        searchResult = BinarySearch.search(1, SEQ);
         assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeZeroIfSeqLegnthEqualsOneAndKeyIsInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ_ONE);
+        int[] SEQ = {4, 5, 6, 8, 9};
+        searchResult = BinarySearch.search(4, SEQ);
         assertThat(searchResult.getPosition(), Matchers.is(ZERO));
     }
 
     @Test
     public void searchShouldReturnFalseIfSeqLengthEqualsOneAndKeyIsNotInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ_TWO);
+        int[] SEQ = {5};
+        searchResult = BinarySearch.search(2, SEQ);
         assertThat(searchResult.isFound(), Matchers.is(false));
     }
 
     @Test
     public void searchPositionShouldBeMinusOneIfSeqLegnthEqualsOneAndKeyIsNotInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ_TWO);
+        int[] SEQ = {8};
+        searchResult = BinarySearch.search(3, SEQ);
         assertThat(searchResult.getPosition(), Matchers.is(MINUS_ONE));
     }
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthIsGreaterThanOneAndKeyIsTheFirstElementInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ);
+        int[] SEQ = {4, 5, 2, 1};
+        searchResult = BinarySearch.search(4, SEQ);
         assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeZeroIfSeqLengthIsGreaterThanOneAndKeyIsTheFirstElementInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ);
+        int[] SEQ = {4, 1, 5, 7, 1};
+        searchResult = BinarySearch.search(4, SEQ);
         assertThat(searchResult.getPosition(), Matchers.is(ZERO));
     }
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthIsGreaterThanOneAndKeyIsTheLastElementInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ);
+        int[] SEQ = {5, 9, 8, 3, 2};
+        searchResult = BinarySearch.search(2, SEQ);
         assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeTwoIfSeqLengthIsGreaterThanOneAndKeyIsTheLastElementInSeq() {
-        searchResult = BinarySearch.search(THREE, SEQ);
-        assertThat(searchResult.getPosition(), Matchers.is(TWO));
+        int[] SEQ = {5 ,12, 53};
+        searchResult = BinarySearch.search(53, SEQ);
+        assertThat(searchResult.getPosition(), Matchers.is(2));
     }
 
     @Test
     public void searchShouldReturnTrueIfSeqLengthIsGreaterThanOneAndKeyIsTheCenterElementInSeq() {
-        searchResult = BinarySearch.search(ONE, SEQ);
+        int[] SEQ = {5 , 5346, 12};
+        searchResult = BinarySearch.search(5346, SEQ);
         assertThat(searchResult.isFound(), Matchers.is(true));
     }
 
     @Test
     public void searchPositionShouldBeOneIfSeqLengthIsGreaterThanOneAndKeyIsTheCenterElementInSeq() {
-        searchResult = BinarySearch.search(TWO, SEQ);
+        int[] SEQ = {345, 235, 361};
+        searchResult = BinarySearch.search(235, SEQ);
         assertThat(searchResult.getPosition(), Matchers.is(ONE));
     }
 
     @Test
     public void searchShouldReturnFalseIfSeqLengthIsGreaterThanOneAndKeyIsNotInSeq() {
+        int[] SEQ = {456, 2137, 856, 144};
         searchResult = BinarySearch.search(ZERO, SEQ);
         assertThat(searchResult.isFound(), Matchers.is(false));
     }
 
     @Test
     public void searchPositionShouldBeMinusOneIfSeqLengthIsGreaterThanOneAndKeyIsNotInSeq() {
-        searchResult = BinarySearch.search(ZERO, SEQ);
+        int[] SEQ = {3456, 346, 346, 967, 142, 9897, 2342, 976};
+        searchResult = BinarySearch.search(65423546, SEQ);
         assertThat(searchResult.getPosition(), Matchers.is(MINUS_ONE));
     }
 
